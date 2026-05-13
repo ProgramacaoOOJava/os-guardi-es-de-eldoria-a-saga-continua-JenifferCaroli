@@ -1,58 +1,52 @@
-package eldoria;
 
-import java.util.Objects;
+      
+public abstract class Personagem {
+//A classe Personagem é uma classe abstrata que define os atributos e métodos comuns a todos os personagens do jogo.
 
-/**
- * Classe base para representar personagens do reino de Eldoria.
- * Aplica conceitos de encapsulamento, herança e polimorfismo.
- */
-public class abstract Personagem {
-    // Atributos privados (encapsulamento)
+        private String nome, classe;
+        private int nivel, pontosDeVida;
+        private double poderBase;
+//Construtor, getters e setters para os atributos da classe.
 
+        public Personagem(String nome, String classe, int nivel, int pontosDeVida, double poderBase) {
+            this.nome = nome;
+            this.classe = classe;
+            this.nivel = nivel;
+            this.pontosDeVida = pontosDeVida;
+            this.poderBase = poderBase;
+        }
+        //Getters para acessar os atributos privados da classe.
 
-    // * Construtor que inicializa todos os atributos do personagem.
+        public String getNome() {
+            return nome;
+        }
 
-    // Getters
+        public String getClasse() {
+            return classe;
+        }
 
-    // Setters com validações
+        public int getNivel() {
+            return nivel;
+        }
 
-    // * Criar métodos que define os pontos de vida do personagem.
+        public int getPontosDeVida() {
+            return pontosDeVida;
+        }
 
+        public double getPoderBase() {
+            return poderBase;
+        }
+    
 
-    /**
-     * Criar método que define a habilidade do personagem.
-     * Deve ser sobrescrito pelas subclasses para implementar comportamentos específicos.
-     */
-
-
-
-    /**
-     * Sobrescrita do método toString() para exibir informações do personagem.
-     * @return String formatada com todos os atributos do personagem
-     */
-    @Override
-    public String toString() {
-
-    }
-
-    /**
-     * Sobrescrita do método equals() para comparar personagens.
-     * Dois personagens são considerados iguais se tiverem o mesmo nome e classe.
-     * @param obj Objeto a ser comparado
-     * @return true se os personagens forem iguais, false caso contrário
-     */
-    @Override
-    public boolean equals(Object obj) {
-
-    }
-
-    /**
-     * Sobrescrita do método hashCode() para ser consistente com equals().
-     * @return Código hash baseado no nome e classe
-     */
-    @Override
-    public int hashCode() {
-
+//Método abstrato que deve ser implementado por todas as subclasses para definir a habilidade específica de cada personagem.
+    public abstract void usarHabilidade();
+//Método para exibir as informações do personagem.
+        
+    public void exibirStatus() {
+        System.out.println("Nome: " + this.getNome());
+        System.out.println("Classe: " + this.getClasse());
+        System.out.println("Nível: " + this.getNivel());
+        System.out.println("Pontos de Vida: " + this.getPontosDeVida());
+        System.out.println("Poder Base: " + this.getPoderBase());
     }
 }
-
