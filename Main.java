@@ -13,54 +13,26 @@ public class Main {
         personagens.add(new Mago("Merlin", "Mago", 60, 120, 300.0));
         personagens.add(new Guerreiro("Aragorn", "Guerreiro", 55, 130, 350.0));
 
-        // Percorrendo a lista de personagens e exibindo suas informações usando o
-        // método toString, além de usar a habilidade de cada personagem e verificar seu
-        // tipo usando instanceof.
+        // percorrer a lista com um for e para cada personagem: chamar o métdo
+        // exibirStatus, usarHabilidade
         for (Personagem personagem : personagens) {
-            System.out.println("Status do personagem:");
-            System.out.println(" ");
-            System.out.println(personagem.toString());
-            System.out.println(" ");
-            System.out.println("-----------------------------");
-
-            // Usando a habilidade do personagem.
-            System.out.println("Usando a habilidade do personagem:");
+            personagem.exibirStatus();
             System.out.println(" ");
             personagem.usarHabilidade();
             System.out.println(" ");
-            System.out.println("-----------------------------");
-
-            // Verificando o tipo do personagem usando instanceof para exibir uma mensagem
-            // específica.
-            System.out.println("Verificando o tipo do personagem:");
-            System.out.println(" ");
+            // Se for um Mago registrar ao menos uma ação usando registrarAcao.
             if (personagem instanceof Mago) {
-                System.out.println(personagem.getNome() + " é um Mago.");
-                System.out.println(" ");
-                System.out.println("-----------------------------");
-            } else if (personagem instanceof Guerreiro) {
-                System.out.println(personagem.getNome() + " é um Guerreiro.");
-                System.out.println(" ");
-                System.out.println("-----------------------------");
+                ((Mago) personagem).registrarAcao("Usou uma bola de fogo!");
+                ((Mago) personagem).auditarAcoes();
+            }
+            // Fazer cast eplícito para Personagem e invocar atribuirBencao com um valor
+            // arbitrário,depois chamar exibirStatus mais uma vez.
+            if (personagem instanceof Personagem) {
+                ((Personagem) personagem).atribuirBencao(100.0);
+                ((Personagem) personagem).exibirStatus();
+
             }
 
-            // Comparar dois personagens com equals e indicar se são iguais ou diferentes.
-
-            System.out.println("Comparando personagens:");
-            System.out.println(" ");
-            Personagem personagem1 = new Mago("Lia", "Mago", 50, 100, 200.0);
-            Personagem personagem2 = new Guerreiro("Thorin", "Guerreiro", 45, 150, 250.0);
-            if (personagem1.getClass().equals(personagem2.getClass()) && personagem1.equals(personagem2)) {
-                System.out.println(personagem1.getNome() + " e " + personagem2.getNome() + " são iguais.");
-            } else if (personagem1.getClass().equals(personagem2.getClass()) && !personagem1.equals(personagem2)) {
-                System.out.println(personagem1.getNome() + " e " + personagem2.getNome()
-                        + " são do mesmo tipo, mas são diferentes.");
-                System.out.println(" ");
-            } else {
-                System.out.println(personagem1.getNome() + " e " + personagem2.getNome() + " são de tipos diferentes.");
-                System.out.println(" ");
-            }
         }
-
     }
 }

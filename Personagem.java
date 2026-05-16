@@ -131,4 +131,9 @@ public class Personagem {
         System.out.println("Pontos de Vida: " + this.getPontosDeVida());
         System.out.println("Poder Base: " + this.getPoderBase());
     }
+
+    // Método protegido que aumenta o poder base
+    protected void atribuirBencao(double valor) {
+        this.poderBase += valor;
+    }
 }
